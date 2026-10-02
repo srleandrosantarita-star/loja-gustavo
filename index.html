@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gustavo Modas – Loja de Roupas</title>
+  <meta name="description" content="Roupas masculinas e femininas com estilo e preço justo.">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="logo" href="#" aria-label="Gustavo Modas">
+      <svg class="logo-icone" viewBox="0 0 56 56" aria-hidden="true">
+        <defs><clipPath id="logo-clip"><rect width="56" height="56" rx="14"/></clipPath></defs>
+        <rect class="logo-fundo" width="56" height="56" rx="14" fill="#2563eb"/>
+        <g clip-path="url(#logo-clip)"><g transform="rotate(20 28 28)"><rect class="logo-brilho" x="-30" y="-20" width="14" height="100" fill="#fff" opacity=".4"/></g></g>
+        <g class="logo-cabide" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M28 23v-3.5a4.5 4.5 0 1 0-4.5-4.5"/>
+          <path d="M28 23 45 34.5a2 2 0 0 1-1.1 3.7H12.1A2 2 0 0 1 11 34.5L28 23"/>
+        </g>
+      </svg>
+      <span class="logo-texto">Gustavo<span>Modas</span></span>
+    </a>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button id="btn-carrinho" class="btn-carrinho" aria-label="Abrir carrinho">
+      🛒 <span id="qtd-carrinho">0</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-camiseta" viewBox="0 0 48 48"><path d="M16 6 6 12l4 8 4-2v22h20V18l4 2 4-8-10-6c-2 3-14 3-16 0Z"/></symbol>
+        <symbol id="i-blusa" viewBox="0 0 48 48"><path d="M16 6 4 24l5 4 5-6v20h20V22l5 6 5-4L32 6c-2 3-14 3-16 0Z"/></symbol>
+        <symbol id="i-casaco" viewBox="0 0 48 48"><path d="M16 7 7 11 3 36l7 2 3-11v15h22V27l3 11 7-2-4-25-9-4c-1 5-4 7-8 7s-7-2-8-7Z"/><path d="M24 14v28M13 27h-0M35 27h0"/><path d="M17 33h5M26 33h5"/></symbol>
+        <symbol id="i-tenis" viewBox="0 0 48 48"><path d="M4 31c7 0 11-6 13-11l4 4c4 3 9 3 13 5l9 4v6H4Z"/><path d="M4 36h40M21 24l3-3M26 26l3-3"/></symbol>
+        <symbol id="i-calca" viewBox="0 0 48 48"><path d="M14 5h20l4 38h-10l-4-22-4 22H10Z"/><path d="M14 11h20"/></symbol>
+        <symbol id="i-bone" viewBox="0 0 48 48"><path d="M8 30C8 18 16 12 26 12s14 6 14 18Z"/><path d="M40 30h6c0 3-6 4-10 4H8"/><path d="M26 12v-3"/></symbol>
+      </defs>
+    </svg>
+    <div class="hero-fundo" aria-hidden="true">
+      <svg class="ico" style="--x:5%;--y:14%;--s:70px;--r:-12deg;--d:0s;--t:7s"><use href="#i-camiseta"/></svg>
+      <svg class="ico" style="--x:80%;--y:8%;--s:84px;--r:10deg;--d:-2s;--t:9s"><use href="#i-casaco"/></svg>
+      <svg class="ico" style="--x:16%;--y:66%;--s:64px;--r:8deg;--d:-4s;--t:8s"><use href="#i-bone"/></svg>
+      <svg class="ico" style="--x:70%;--y:64%;--s:72px;--r:-8deg;--d:-1s;--t:10s"><use href="#i-blusa"/></svg>
+      <svg class="ico" style="--x:36%;--y:4%;--s:46px;--r:14deg;--d:-3s;--t:8s"><use href="#i-bone"/></svg>
+      <svg class="ico" style="--x:90%;--y:44%;--s:56px;--r:-14deg;--d:-5s;--t:9s"><use href="#i-camiseta"/></svg>
+      <svg class="ico" style="--x:2%;--y:46%;--s:58px;--r:12deg;--d:-6s;--t:11s"><use href="#i-blusa"/></svg>
+      <svg class="ico" style="--x:54%;--y:78%;--s:60px;--r:-10deg;--d:-2.5s;--t:9.5s"><use href="#i-casaco"/></svg>
+      <svg class="ico" style="--x:28%;--y:84%;--s:44px;--r:6deg;--d:-7s;--t:8.5s"><use href="#i-camiseta"/></svg>
+      <svg class="ico" style="--x:22%;--y:26%;--s:48px;--r:-6deg;--d:-1.5s;--t:9s"><use href="#i-camiseta"/></svg>
+      <svg class="ico" style="--x:62%;--y:14%;--s:54px;--r:8deg;--d:-3.5s;--t:10s"><use href="#i-tenis"/></svg>
+      <svg class="ico" style="--x:86%;--y:74%;--s:66px;--r:-12deg;--d:-4.5s;--t:11s"><use href="#i-casaco"/></svg>
+      <svg class="ico" style="--x:8%;--y:84%;--s:56px;--r:10deg;--d:-6.5s;--t:9s"><use href="#i-calca"/></svg>
+      <svg class="ico" style="--x:46%;--y:88%;--s:48px;--r:-8deg;--d:-0.5s;--t:8s"><use href="#i-bone"/></svg>
+      <svg class="ico" style="--x:75%;--y:36%;--s:44px;--r:12deg;--d:-8s;--t:10.5s"><use href="#i-blusa"/></svg>
+      <svg class="ico" style="--x:94%;--y:20%;--s:50px;--r:-10deg;--d:-2.2s;--t:9.5s"><use href="#i-calca"/></svg>
+      <svg class="ico" style="--x:30%;--y:50%;--s:42px;--r:6deg;--d:-5.5s;--t:8.5s"><use href="#i-tenis"/></svg>
+      <svg class="ico" style="--x:66%;--y:90%;--s:40px;--r:-14deg;--d:-9s;--t:11s"><use href="#i-camiseta"/></svg>
+      <svg class="ico" style="--x:14%;--y:4%;--s:46px;--r:8deg;--d:-7.5s;--t:10s"><use href="#i-blusa"/></svg>
+    </div>
+    <svg class="hero-logo" viewBox="0 0 306 56" role="img" aria-label="Gustavo Modas">
+      <rect class="hl-borda" pathLength="100" x="2" y="2" width="52" height="52" rx="13" fill="none" stroke="#fff" stroke-width="3"/>
+      <g class="hl-cabide" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M28 23v-3.5a4.5 4.5 0 1 0-4.5-4.5"/>
+        <path d="M28 23 45 34.5a2 2 0 0 1-1.1 3.7H12.1A2 2 0 0 1 11 34.5L28 23"/>
+      </g>
+      <text class="hl-nome" x="70" y="37" textLength="228" lengthAdjust="spacingAndGlyphs" font-family="Segoe UI, system-ui, -apple-system, Roboto, sans-serif" font-size="30" font-weight="800" fill="#fff" letter-spacing="-0.5">Gustavo<tspan fill="#bfdbfe">Modas</tspan></text>
+    </svg>
+    <h1>Estilo para todos os dias</h1>
+    <p>Peças selecionadas com qualidade e preço justo. Frete grátis acima de R$ 250.</p>
+    <a class="btn" href="#produtos">Ver coleção</a>
+  </section>
+
+  <main id="produtos" class="container">
+    <div class="filtros">
+      <input id="busca" type="search" placeholder="Buscar produto...">
+      <div id="categorias" class="categorias"></div>
+      <select id="ordem">
+        <option value="">Ordenar</option>
+        <option value="menor">Menor preço</option>
+        <option value="maior">Maior preço</option>
+        <option value="nome">Nome (A–Z)</option>
+      </select>
+    </div>
+    <div id="grade" class="grade"></div>
+    <p id="vazio" class="vazio" hidden>Nenhum produto encontrado.</p>
+  </main>
+
+  <footer id="contato" class="rodape">
+    <p><strong>Gustavo Modas</strong> – Atendimento pelo WhatsApp</p>
+    <p>Seg a Sáb, 9h às 18h</p>
+  </footer>
+
+  <div id="fundo" class="fundo" hidden></div>
+  <aside id="carrinho" class="carrinho" aria-hidden="true">
+    <div class="carrinho-topo">
+      <h2>Seu carrinho</h2>
+      <button id="fechar" aria-label="Fechar">✕</button>
+    </div>
+    <div id="itens" class="itens"></div>
+    <div class="carrinho-base">
+      <div class="total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+      <button id="finalizar" class="btn">Finalizar pelo WhatsApp</button>
+      <button id="limpar" class="btn-link">Esvaziar carrinho</button>
+    </div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
