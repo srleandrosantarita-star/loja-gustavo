@@ -199,6 +199,14 @@ const terminou = (anim, ms) => anim
   : Promise.resolve();
 const pararAnimacoes = (...els) => podeAnimar && els.forEach(el => el.getAnimations().forEach(a => a.cancel()));
 const decodificar = im => (im.decode ? im.decode().catch(() => {}) : Promise.resolve());
+const espera = ms => new Promise(r => setTimeout(r, ms));
+// internet lenta: não espera a foto para sempre; ajusta o tamanho quando ela chegar
+function ajustarAoCarregar() {
+  if (zImg.complete && zImg.naturalWidth) return;
+  zImg.addEventListener("load", () => {
+    if (zAberto && !zFechando) Object.assign(zCaixa.style, areaZoom(zImg));
+  }, { once: true });
+}
 const retangulo = el => {
   const r = el.getBoundingClientRect();
   return { left: r.left + "px", top: r.top + "px", width: r.width + "px", height: r.height + "px" };
@@ -272,7 +280,7 @@ async function abrirZoom(foto) {
   zProd = p;
   zIdx = fotoAtual[p.id] || 0;
   zImg.src = img.currentSrc || img.src;
-  await Promise.all([decodificar(img), decodificar(zImg)]);
+  await Promise.race([Promise.all([decodificar(img), decodificar(zImg)]), espera(1200)]);
 
   const estilo = getComputedStyle(img);
   const inicio = retangulo(foto);
@@ -283,6 +291,7 @@ async function abrirZoom(foto) {
   const fim = areaZoom(zImg);
   foto.classList.add("zoom-origem");
   Object.assign(zCaixa.style, fim, { transform: "", borderRadius: "" });
+  ajustarAoCarregar();
 
   const t = dur(420);
   const anim = animar(zCaixa,
@@ -366,13 +375,14 @@ async function mudarFotoZoom(dir) {
   const sai = animar(zCaixa,
     [{ transform: de, opacity: 1 }, { transform: `translateX(${-dir * 45}vw)`, opacity: 0 }],
     { duration: dur(200), easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" });
-  await Promise.all([terminou(sai, 200), pronta]);
+  await Promise.all([terminou(sai, 200), Promise.race([pronta, espera(1500)])]);
   if (zFechando || !zAberto) return;
   zImg.src = zProd.imgs[zIdx];
   zImg.style.objectPosition = "";
-  await decodificar(zImg);
+  await Promise.race([decodificar(zImg), espera(300)]);
   if (zFechando || !zAberto) return;
   Object.assign(zCaixa.style, areaZoom(zImg));
+  ajustarAoCarregar();
   if (sai) sai.cancel();
   const entra = animar(zCaixa,
     [{ transform: `translateX(${dir * 60}px)`, opacity: 0 }, { transform: "none", opacity: 1 }],
