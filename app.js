@@ -159,6 +159,24 @@ if (hero && fundoHero && !matchMedia("(prefers-reduced-motion: reduce)").matches
 }
 
 // ===== Zoom das fotos: toque na foto e ela cresce até ocupar a tela =====
+document.body.insertAdjacentHTML("beforeend", `
+  <div id="zoom" class="zoom" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+    <div class="zoom-fundo"></div>
+    <div class="zoom-caixa"><img id="zoom-img" alt="" draggable="false"></div>
+    <button id="zoom-fechar" class="zoom-btn zoom-fechar" aria-label="Fechar foto">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <button id="zoom-ant" class="zoom-btn zoom-seta zoom-ant" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+    </button>
+    <button id="zoom-prox" class="zoom-btn zoom-seta zoom-prox" aria-label="Próxima foto">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+    </button>
+    <div class="zoom-rodape">
+      <p id="zoom-nome" class="zoom-nome"></p>
+      <div id="zoom-pontos" class="zoom-pontos" aria-hidden="true"></div>
+    </div>
+  </div>`);
 const zoom = $("zoom");
 const zCaixa = zoom.querySelector(".zoom-caixa");
 const zFundo = zoom.querySelector(".zoom-fundo");
