@@ -19,10 +19,12 @@ a{color:inherit;text-decoration:none}
 .topo nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .25s}
 .topo nav a:hover{color:var(--acc)}
 .topo nav a:hover::after{transform:scaleX(1)}
-.btn-carrinho{background:none;border:1px solid var(--borda);border-radius:999px;padding:6px 14px;font-size:1rem;cursor:pointer;color:var(--txt);transition:border-color .2s,transform .2s}
+.btn-carrinho{flex:none;white-space:nowrap;background:none;border:1px solid var(--borda);border-radius:999px;padding:6px 14px;font-size:1rem;cursor:pointer;color:var(--txt);transition:border-color .2s,transform .2s}
 .btn-carrinho:hover{border-color:var(--acc);transform:translateY(-1px)}
 .btn-carrinho span{display:inline-block;background:var(--acc);color:#fff;border-radius:999px;padding:1px 8px;font-size:.8rem;margin-left:4px}
 .btn-carrinho span.pula{animation:pula .5s cubic-bezier(.3,1.6,.5,1)}
+/* no celular o topo cabia mais largo que a tela: fica só logo + carrinho */
+@media (max-width:480px){.topo{gap:12px;padding:12px 16px}.topo nav{display:none}.btn-carrinho{margin-left:auto}}
 
 /* banner */
 .hero{position:relative;overflow:hidden;text-align:center;padding:84px 20px;color:#fff;background:linear-gradient(120deg,#0b1e4a,#1d4ed8,#38bdf8,#1d4ed8,#0b1e4a);background-size:300% 300%;animation:fluxo 14s ease-in-out infinite}
@@ -111,6 +113,35 @@ a{color:inherit;text-decoration:none}
 .carrinho-base{padding:16px;border-top:1px solid var(--borda);display:flex;flex-direction:column}
 .total{display:flex;justify-content:space-between;font-size:1.15rem;margin-bottom:12px}
 .carrinho-base .btn{width:100%}
+
+/* zoom das fotos */
+.foto[data-zoom]{position:relative;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+.foto[data-zoom]::after{content:"";position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='m20 20-4.6-4.6M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/18px no-repeat;box-shadow:0 2px 8px rgba(0,0,0,.18);pointer-events:none;transition:transform .2s,opacity .2s}
+.card:hover .foto[data-zoom]::after{transform:scale(1.12)}
+.foto[data-zoom]:focus-visible{outline:3px solid var(--acc);outline-offset:-3px}
+.foto.zoom-origem img,.foto.zoom-origem::after{opacity:0;transition:none}
+.zoom{position:fixed;inset:0;z-index:50;cursor:zoom-out;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.zoom[hidden]{display:none}
+.zoom-fundo{position:absolute;inset:0;background:rgba(5,11,26,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.zoom-caixa{position:fixed;overflow:hidden;border-radius:10px;background:#0b1530;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.zoom-caixa img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.zoom-btn{position:absolute;display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(10,20,45,.6);color:#fff;cursor:pointer;opacity:0;box-shadow:0 4px 14px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .25s,background .2s,transform .2s}
+.zoom-btn[hidden]{display:none}
+.zoom-btn:hover{background:rgba(37,99,235,.85)}
+.zoom-btn:active{transform:scale(.9)}
+.zoom-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.zoom-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.zoom-fechar{top:10px;right:12px}
+.zoom-seta{top:calc(50% - 22px)}
+.zoom-ant{left:12px}
+.zoom-prox{right:12px}
+.zoom-rodape{position:absolute;left:0;right:0;bottom:0;padding:0 16px 16px;text-align:center;color:#fff;pointer-events:none;opacity:0;transition:opacity .25s}
+.zoom-nome{font-weight:600;font-size:.95rem;line-height:1.35;margin-bottom:10px;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.zoom-nome small{display:block;color:#bfdbfe;font-weight:500;font-size:.85rem}
+.zoom-pontos{display:flex;justify-content:center;gap:8px}
+.zoom-pontos span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .25s,transform .25s}
+.zoom-pontos span.sel{background:#fff;transform:scale(1.35)}
+.zoom.ui .zoom-btn,.zoom.ui .zoom-rodape{opacity:1}
 
 /* animações */
 @keyframes sobe{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
