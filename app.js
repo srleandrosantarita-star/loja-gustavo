@@ -189,12 +189,20 @@ let zProd = null, zIdx = 0;
 let zAberto = false, zOcupado = false, zFechando = false, zVoltando = false;
 let gesto = null, arrastou = false;
 
-const dur = ms => (reduzMovimento.matches ? 0 : ms);
+// Navegadores antigos sem animação: o zoom abre e fecha na hora, sem travar
+const podeAnimar = typeof zCaixa.animate === "function" && typeof zCaixa.getAnimations === "function";
+const dur = ms => (reduzMovimento.matches || !podeAnimar ? 0 : ms);
+const animar = (el, quadros, opcoes) => (opcoes.duration ? el.animate(quadros, opcoes) : null);
+// espera a animação acabar, com limite de tempo (aba em segundo plano não desenha quadros)
+const terminou = (anim, ms) => anim
+  ? Promise.race([anim.finished.catch(() => {}), new Promise(r => setTimeout(r, ms + 300))])
+  : Promise.resolve();
+const pararAnimacoes = (...els) => podeAnimar && els.forEach(el => el.getAnimations().forEach(a => a.cancel()));
+const decodificar = im => (im.decode ? im.decode().catch(() => {}) : Promise.resolve());
 const retangulo = el => {
   const r = el.getBoundingClientRect();
   return { left: r.left + "px", top: r.top + "px", width: r.width + "px", height: r.height + "px" };
 };
-const pararAnimacoes = (...els) => els.forEach(el => el.getAnimations().forEach(a => a.cancel()));
 
 // Tamanho e posição da foto ampliada (inteira na tela, sem cortar)
 function areaZoom(img) {
@@ -264,7 +272,7 @@ async function abrirZoom(foto) {
   zProd = p;
   zIdx = fotoAtual[p.id] || 0;
   zImg.src = img.currentSrc || img.src;
-  await Promise.all([img.decode(), zImg.decode()].map(pr => pr.catch(() => {})));
+  await Promise.all([decodificar(img), decodificar(zImg)]);
 
   const estilo = getComputedStyle(img);
   const inicio = retangulo(foto);
@@ -277,16 +285,16 @@ async function abrirZoom(foto) {
   Object.assign(zCaixa.style, fim, { transform: "", borderRadius: "" });
 
   const t = dur(420);
-  const anim = zCaixa.animate(
+  const anim = animar(zCaixa,
     [{ ...inicio, borderRadius: "13px 13px 0 0", boxShadow: SEM_SOMBRA }, { ...fim, borderRadius: "10px", boxShadow: SOMBRA }],
     { duration: t, easing: SUAVE });
-  zImg.animate([{ transform: estilo.transform }, { transform: "none" }], { duration: t, easing: SUAVE });
-  zFundo.animate([{ opacity: 0 }, { opacity: 1 }], { duration: t, easing: "ease-out" });
+  animar(zImg, [{ transform: estilo.transform }, { transform: "none" }], { duration: t, easing: SUAVE });
+  animar(zFundo, [{ opacity: 0 }, { opacity: 1 }], { duration: t, easing: "ease-out" });
   void zoom.offsetWidth; // garante que os botões apareçam com transição
   zoom.classList.add("ui");
   history.pushState({ zoom: 1 }, ""); // botão "voltar" do celular fecha a foto
   $("zoom-fechar").focus({ preventScroll: true });
-  await anim.finished.catch(() => {});
+  await terminou(anim, t);
   if (!zFechando) zOcupado = false;
 }
 
@@ -312,17 +320,17 @@ async function fecharZoom() {
     zImg.style.objectPosition = getComputedStyle(foto.querySelector("img")).objectPosition;
     const fim = retangulo(foto);
     Object.assign(zCaixa.style, fim, { borderRadius: "13px 13px 0 0" });
-    anim = zCaixa.animate(
+    anim = animar(zCaixa,
       [{ ...inicio, borderRadius: "10px", boxShadow: SOMBRA }, { ...fim, borderRadius: "13px 13px 0 0", boxShadow: SEM_SOMBRA }],
       { duration: t, easing: SUAVE });
   } else {
     // card fora da tela: só some suavemente
     Object.assign(zCaixa.style, inicio);
-    anim = zCaixa.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "scale(.92)" }],
+    anim = animar(zCaixa, [{ opacity: 1, transform: "none" }, { opacity: 0, transform: "scale(.92)" }],
       { duration: dur(220), easing: "ease-in", fill: "forwards" });
   }
-  zFundo.animate([{ opacity: opacFundo }, { opacity: 0 }], { duration: t, easing: "ease-in", fill: "forwards" });
-  await anim.finished.catch(() => {});
+  animar(zFundo, [{ opacity: opacFundo }, { opacity: 0 }], { duration: t, easing: "ease-in", fill: "forwards" });
+  await terminou(anim, t);
 
   zoom.hidden = true;
   pararAnimacoes(zCaixa, zFundo);
@@ -352,24 +360,24 @@ async function mudarFotoZoom(dir) {
   marcarFotoZoom();
   const nova = new Image();
   nova.src = zProd.imgs[zIdx];
-  const pronta = nova.decode().catch(() => {});
+  const pronta = decodificar(nova);
   const de = zCaixa.style.transform || "none";
   zCaixa.style.transform = "";
-  const sai = zCaixa.animate(
+  const sai = animar(zCaixa,
     [{ transform: de, opacity: 1 }, { transform: `translateX(${-dir * 45}vw)`, opacity: 0 }],
     { duration: dur(200), easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" });
-  await Promise.all([sai.finished.catch(() => {}), pronta]);
+  await Promise.all([terminou(sai, 200), pronta]);
   if (zFechando || !zAberto) return;
   zImg.src = zProd.imgs[zIdx];
   zImg.style.objectPosition = "";
-  await zImg.decode().catch(() => {});
+  await decodificar(zImg);
   if (zFechando || !zAberto) return;
   Object.assign(zCaixa.style, areaZoom(zImg));
-  sai.cancel();
-  const entra = zCaixa.animate(
+  if (sai) sai.cancel();
+  const entra = animar(zCaixa,
     [{ transform: `translateX(${dir * 60}px)`, opacity: 0 }, { transform: "none", opacity: 1 }],
     { duration: dur(260), easing: SUAVE });
-  await entra.finished.catch(() => {});
+  await terminou(entra, 260);
   if (!zFechando) zOcupado = false;
 }
 
@@ -377,8 +385,8 @@ function voltarAoCentro() {
   const de = zCaixa.style.transform, opac = zFundo.style.opacity;
   zCaixa.style.transform = "";
   zFundo.style.opacity = "";
-  if (de) zCaixa.animate([{ transform: de }, { transform: "none" }], { duration: dur(240), easing: SUAVE });
-  if (opac) zFundo.animate([{ opacity: opac }, { opacity: 1 }], { duration: dur(240) });
+  if (de) animar(zCaixa, [{ transform: de }, { transform: "none" }], { duration: dur(240), easing: SUAVE });
+  if (opac) animar(zFundo, [{ opacity: opac }, { opacity: 1 }], { duration: dur(240) });
   zoom.classList.add("ui");
 }
 
