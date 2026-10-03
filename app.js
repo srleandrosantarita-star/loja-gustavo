@@ -159,7 +159,8 @@ if (hero && fundoHero && !matchMedia("(prefers-reduced-motion: reduce)").matches
 }
 
 // ===== Zoom das fotos: toque na foto e ela cresce até ocupar a tela =====
-document.body.insertAdjacentHTML("beforeend", `
+// (a tela do zoom está no index.html; se faltar lá, é criada aqui)
+if (!$("zoom")) document.body.insertAdjacentHTML("beforeend", `
   <div id="zoom" class="zoom" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
     <div class="zoom-fundo"></div>
     <div class="zoom-caixa"><img id="zoom-img" alt="" draggable="false"></div>
