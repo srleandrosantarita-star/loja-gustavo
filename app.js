@@ -489,6 +489,7 @@ renderCategorias(); renderGrade(); renderCarrinho();
   if (!h1) return;
   const txt = h1.textContent;
   h1.setAttribute("aria-label", txt);
-  h1.innerHTML = [...txt].map((ch, i) =>
-    ch === " " ? " " : `<span class="l" aria-hidden="true" style="--i:${i}">${ch}</span>`).join("");
+  let i = 0;
+  h1.innerHTML = txt.split(" ").map(w =>
+    `<span class="w">${[...w].map(ch => `<span class="l" aria-hidden="true" style="--i:${i++}">${ch}</span>`).join("")}</span>`).join(" ");
 })();
