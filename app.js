@@ -6,19 +6,40 @@ const PRODUTOS = [
   { id: 2, nome: "Camiseta Calvin Klein Marrom", cat: "Camisetas", preco: 100, emoji: "👕", cor: "#eadfd2", imgs: ["img/camiseta-marrom-frente.jpg", "img/camiseta-marrom-costas.jpg"], tam: ["G", "GG"] },
   { id: 3, nome: "Calça Jeans Azul Escuro", cat: "Calças", preco: 159.9, emoji: "👖", cor: "#cfd8e6", imgs: ["img/calca-jeans-look.jpg", "img/calca-jeans-detalhe.jpg", "img/calca-jeans-etiqueta.jpg"], pos: "50% 72%", tam: ["38", "40", "42", "44"] },
   { id: 4, nome: "Calça Sarja Chino", cat: "Calças", preco: 139.9, emoji: "👖", cor: "#eadfc8", tam: ["38", "40", "42", "44"] },
-  { id: 7, nome: "Jaqueta Under Armour Preta", cat: "Casacos", preco: 250, emoji: "🧥", cor: "#d5e6dc", imgs: ["img/jaqueta-preta.jpg", "img/jaqueta-preta-costas.jpg"], tam: ["GG"] },
-  { id: 8, nome: "Moletom Canguru", cat: "Casacos", preco: 179.9, emoji: "🧥", cor: "#e6dccf", imgs: ["img/moletom-canguru-frente.jpg", "img/moletom-canguru.jpg"], tam: ["P", "M", "G", "GG"] },
-  { id: 13, nome: "Jaqueta Champion Corta-vento Camuflada Cinza", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#d9d9de", imgs: ["img/jaqueta-camuflada-frente.jpg", "img/jaqueta-camuflada.jpg","img/jaqueta-camuflada-detalhe.jpg", "img/jaqueta-camuflada-costas.jpg", "img/jaqueta-camuflada-barra.jpg"], tam: ["G"] },
+  { id: 7, nome: "Jaqueta Under Armour Preta", cat: "Casacos", preco: 250, emoji: "🧥", cor: "#d5e6dc", imgs: ["img/jaqueta-preta.jpg", "img/jaqueta-ua-extra-1.jpg", "img/jaqueta-preta-costas.jpg"], tam: ["GG"] },
+  { id: 8, nome: "Moletom Volcom Cinza", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#e6dccf", imgs: ["img/moletom-canguru-frente.jpg", "img/moletom-canguru.jpg"], tam: ["G"] },
+  { id: 13, nome: "Jaqueta Champion Corta-vento Camuflada Cinza", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#d9d9de", imgs: ["img/jaqueta-camuflada-frente.jpg", "img/jaqueta-camuflada.jpg","img/jaqueta-camuflada-detalhe.jpg", "img/jaqueta-camuflada-costas.jpg", "img/jaqueta-camuflada-barra.jpg", "img/jaqueta-camuflada-look-1.jpg"], tam: ["G"] },
   { id: 14, nome: "Jaqueta Champion Corta-vento Camuflada Verde", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#d5e0cf", imgs: ["img/jaqueta-camuflada-verde.jpg", "img/jaqueta-camuflada-verde-look.jpg", "img/jaqueta-camuflada-verde-costas.jpg","img/jaqueta-camuflada-verde-detalhe.jpg"], tam: ["G"] },
   { id: 15, nome: "Tênis Oakley Flint Azul", cat: "Calçados", preco: 120, emoji: "👟", cor: "#dbe7f3", imgs: ["img/tenis-azul-3-4.jpg", "img/tenis-azul-frente.jpg","img/tenis-azul-lado.jpg", "img/tenis-azul.jpg", "img/tenis-azul-sola.jpg"], tam: ["43"] },
-  { id: 16, nome: "Agasalho Umbro Azul-marinho", cat: "Conjuntos", preco: 200, emoji: "🥋", cor: "#cfd8e6", imgs: ["img/conjunto-azul.jpg"], tam: ["GG"] },
-  { id: 17, nome: "Moletom Careca Lilás", cat: "Casacos", preco: 169.9, emoji: "🧥", cor: "#e6e0ee", imgs: ["img/moletom-lilas-frente.jpg", "img/moletom-lilas-modelo.jpg", "img/moletom-lilas.jpg", "img/moletom-lilas-costas.jpg"], tam: ["P", "M", "G", "GG"] },
+  { id: 16, nome: "Agasalho Umbro Azul-marinho", cat: "Conjuntos", preco: 200, emoji: "🥋", cor: "#cfd8e6", imgs: ["img/conjunto-azul.jpg", "img/agasalho-umbro-extra-1.jpg", "img/agasalho-umbro-extra-2.jpg"], tam: ["GG"] },
+  { id: 17, nome: "Moletom Adidas Lilás", cat: "Casacos", preco: 350, emoji: "🧥", cor: "#e6e0ee", imgs: ["img/moletom-lilas-frente.jpg", "img/moletom-lilas-modelo.jpg", "img/moletom-lilas.jpg", "img/moletom-lilas-costas.jpg"], tam: ["M", "G"] },
   { id: 18, nome: "Tênis Adidas Branco", cat: "Calçados", preco: 200, emoji: "👟", cor: "#e8edf0", imgs: ["img/tenis-branco-lado.jpg", "img/tenis-branco.jpg", "img/tenis-branco-uso.jpg", "img/tenis-branco-cima.jpg"], tam: ["39"] },
   { id: 19, nome: "Camiseta Calvin Klein Preta", cat: "Camisetas", preco: 100, emoji: "👕", cor: "#dcdcdf", imgs: ["img/camiseta-preta-frente.jpg", "img/camiseta-preta-costas.jpg", "img/camiseta-preta.jpg"], tam: ["G", "GG"] },
   { id: 9, nome: "Bermuda Praia", cat: "Bermudas", preco: 79.9, emoji: "🩳", cor: "#d6eef0", tam: ["P", "M", "G"] },
   { id: 10, nome: "Bermuda Jeans", cat: "Bermudas", preco: 99.9, emoji: "🩳", cor: "#cfd8e6", tam: ["38", "40", "42"] },
   { id: 11, nome: "Boné Aba Curva", cat: "Acessórios", preco: 39.9, emoji: "🧢", cor: "#f1e3c7", tam: ["Único"] },
   { id: 12, nome: "Cachecol de Lã", cat: "Acessórios", preco: 59.9, emoji: "🧣", cor: "#f0d5d0", tam: ["Único"] },
+  { id: 20, nome: "Bolsa Nike Heritage Vintage 30L", cat: "Acessórios", preco: 200, emoji: "🎒", cor: "#dbe7f3", imgs: ["img/bolsa-nike-1.jpg", "img/bolsa-nike-2.jpg", "img/bolsa-nike-3.jpg", "img/bolsa-nike-4.jpg", "img/bolsa-nike-5.jpg", "img/bolsa-nike-6.jpg"], tam: ["Único"] },
+  { id: 21, nome: "Calça Joma Azul-marinho", cat: "Calças", preco: 80, emoji: "👖", cor: "#cfd8e6", imgs: ["img/calca-joma-1.jpg", "img/calca-joma-2.jpg"], tam: ["G"] },
+  { id: 22, nome: "Agasalho Kappa Preto", cat: "Conjuntos", preco: 200, emoji: "🥋", cor: "#dcdcdf", imgs: ["img/agasalho-kappa-1.jpg", "img/agasalho-kappa-2.jpg", "img/agasalho-kappa-3.jpg", "img/agasalho-kappa-4.jpg"], tam: ["GG"] },
+  { id: 23, nome: "Jaqueta Everlast Corta-vento Preta", cat: "Casacos", preco: 90, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/jaqueta-everlast-1.jpg", "img/jaqueta-everlast-2.jpg"], tam: ["G"] },
+  { id: 24, nome: "Jaqueta Puffer Ecko Azul-marinho", cat: "Casacos", preco: 250, emoji: "🧥", cor: "#cfd8e6", imgs: ["img/jaqueta-acolchoada-1.jpg", "img/jaqueta-acolchoada-2.jpg", "img/jaqueta-acolchoada-3.jpg"], tam: ["G"] },
+  { id: 25, nome: "Blusa Moletom Grêmio Cinza", cat: "Casacos", preco: 80, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/blusa-gremio-1.jpg", "img/blusa-gremio-2.jpg", "img/blusa-gremio-3.jpg"], tam: ["G"] },
+  { id: 26, nome: "Tênis Everlast Feminino Slip-on", cat: "Calçados", preco: 80, emoji: "👟", cor: "#dbe7f3", imgs: ["img/tenis-everlast-1.jpg", "img/tenis-everlast-2.jpg", "img/tenis-everlast-3.jpg"], tam: ["39"] },
+  { id: 28, nome: "Chuteira Futsal Umbro Preta", cat: "Calçados", preco: 120, emoji: "👟", cor: "#eceef0", imgs: ["img/futsal-umbro-1.jpg", "img/futsal-umbro-2.jpg", "img/futsal-umbro-3.jpg", "img/futsal-umbro-4.jpg"], tam: ["40"] },
+  { id: 29, nome: "Camiseta Oakley Branca", cat: "Camisetas", preco: null, emoji: "👕", cor: "#e8edf0", imgs: ["img/camiseta-oakley-1.jpg"], tam: [] },
+  { id: 30, nome: "Camiseta Beagle Branca Gola V", cat: "Camisetas", preco: 60, emoji: "👕", cor: "#e8edf0", imgs: ["img/camiseta-branca-v-1.jpg", "img/camiseta-branca-v-2.jpg", "img/camiseta-branca-v-3.jpg"], tam: ["GG"] },
+  { id: 34, nome: "Moletom Oakley Cinza", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/moletom-oakley-1.jpg", "img/moletom-oakley-2.jpg"], tam: ["G"] },
+  { id: 35, nome: "Jaqueta Puma Corta-vento Preta", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/jaqueta-puma-1.jpg", "img/jaqueta-puma-2.jpg", "img/jaqueta-puma-3.jpg", "img/jaqueta-puma-4.jpg"], tam: ["GG"] },
+  { id: 36, nome: "Moletom Under Armour Cinza", cat: "Casacos", preco: 220, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/moletom-ua-1.jpg", "img/moletom-ua-2.jpg", "img/moletom-ua-3.jpg"], tam: ["G"] },
+  { id: 37, nome: "Agasalho Mizuno Preto", cat: "Conjuntos", preco: 320, emoji: "🥋", cor: "#dcdcdf", imgs: ["img/agasalho-mizuno-1.jpg", "img/agasalho-mizuno-2.jpg", "img/agasalho-mizuno-3.jpg", "img/agasalho-mizuno-4.jpg", "img/agasalho-mizuno-5.jpg", "img/agasalho-mizuno-6.jpg", "img/agasalho-mizuno-7.jpg"], tam: ["G"] },
+  { id: 38, nome: "Agasalho Nike Academy Preto", cat: "Conjuntos", preco: 420, emoji: "🥋", cor: "#dcdcdf", imgs: ["img/agasalho-nike-1.jpg", "img/agasalho-nike-2.jpg", "img/agasalho-nike-3.jpg", "img/agasalho-nike-4.jpg", "img/agasalho-nike-5.jpg"], tam: ["G"] },
+  { id: 39, nome: "Chuteira Topper Strike", cat: "Calçados", preco: 150, emoji: "👟", cor: "#eceef0", imgs: ["img/chuteira-topper-1.jpg", "img/chuteira-topper-2.jpg", "img/chuteira-topper-3.jpg", "img/chuteira-topper-4.jpg", "img/chuteira-topper-5.jpg", "img/chuteira-topper-6.jpg", "img/chuteira-topper-7.jpg", "img/chuteira-topper-8.jpg"], tam: ["44"] },
+  { id: 40, nome: "Suéter Tommy Hilfiger Gola V", cat: "Casacos", preco: 350, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/sueter-tommy-1.jpg", "img/sueter-tommy-2.jpg", "img/sueter-tommy-3.jpg", "img/sueter-tommy-4.jpg"], tam: ["G"] },
+  { id: 27, nome: "Churrasqueira a Bafo Portátil", cat: "Casa e Lazer", preco: 100, emoji: "🔥", cor: "#e6dccf", imgs: ["img/churrasqueira-barril-1.jpg", "img/churrasqueira-barril-2.jpg", "img/churrasqueira-barril-3.jpg", "img/churrasqueira-barril-4.jpg"], tam: ["Único"] },
+  { id: 31, nome: "Churrasqueira Portátil com Grelha", cat: "Casa e Lazer", preco: 80, emoji: "🔥", cor: "#e6dccf", imgs: ["img/churrasqueira-galv-1.jpg", "img/churrasqueira-galv-2.jpg", "img/churrasqueira-galv-3.jpg", "img/churrasqueira-galv-4.jpg", "img/churrasqueira-galv-5.jpg"], tam: ["Único"] },
+  { id: 32, nome: "Marmiteira e Lancheira Electrolux Térmica", cat: "Casa e Lazer", preco: 45, emoji: "🍱", cor: "#d6eef0", imgs: ["img/marmita-1.jpg", "img/marmita-2.jpg", "img/marmita-3.jpg"], tam: ["Único"] },
+  { id: 33, nome: "Colchão Inflável Aveludado Casal com Inflador", cat: "Casa e Lazer", preco: 150, emoji: "🛏️", cor: "#dbe7f3", imgs: ["img/colchao-1.jpg", "img/colchao-2.jpg", "img/colchao-3.jpg", "img/colchao-4.jpg"], tam: ["Único"] },
 ];
 
 // ===== Estado =====
@@ -45,8 +66,8 @@ function renderGrade(animar = true) {
   let lista = PRODUTOS.filter(p =>
     (categoria === "Todos" || p.cat === categoria) && p.nome.toLowerCase().includes(q));
   const o = $("ordem").value;
-  if (o === "menor") lista.sort((a, b) => a.preco - b.preco);
-  if (o === "maior") lista.sort((a, b) => b.preco - a.preco);
+  if (o === "menor") lista.sort((a, b) => (a.preco ?? Infinity) - (b.preco ?? Infinity));
+  if (o === "maior") lista.sort((a, b) => (b.preco ?? -1) - (a.preco ?? -1));
   if (o === "nome") lista.sort((a, b) => a.nome.localeCompare(b.nome));
 
   $("vazio").hidden = lista.length > 0;
@@ -59,10 +80,10 @@ function renderGrade(animar = true) {
       <div class="info">
         <span class="cat">${p.cat}</span>
         <h3>${p.nome}</h3>
-        <div class="preco">${brl(p.preco)} <small>ou 3x de ${brl(p.preco / 3)}</small></div>
+        <div class="preco">${p.preco == null ? "Valor em breve" : brl(p.preco)}</div>
         <div class="tamanhos">${p.tam.map(t =>
           `<button class="tam ${t === sel ? "sel" : ""}" data-id="${p.id}" data-tam="${t}">${t}</button>`).join("")}</div>
-        <button class="btn" data-add="${p.id}">Adicionar ao carrinho</button>
+        <button class="btn" data-add="${p.id}"${p.preco == null ? " disabled" : ""}>${p.preco == null ? "Em breve" : "Adicionar ao carrinho"}</button>
       </div>
     </article>`;
   }).join("");
@@ -249,7 +270,7 @@ function travarPagina(v) {
 
 function montarZoomUI() {
   const n = zProd.imgs.length;
-  $("zoom-nome").innerHTML = `${zProd.nome}<small>${brl(zProd.preco)}</small>`;
+  $("zoom-nome").innerHTML = `${zProd.nome}${zProd.preco == null ? "" : `<small>${brl(zProd.preco)}</small>`}`;
   $("zoom-pontos").innerHTML = n > 1 ? zProd.imgs.map(() => "<span></span>").join("") : "";
   $("zoom-ant").hidden = $("zoom-prox").hidden = n < 2;
   marcarFotoZoom();
