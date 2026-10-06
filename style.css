@@ -24,7 +24,9 @@ a{color:inherit;text-decoration:none}
 .btn-carrinho span{display:inline-block;background:var(--acc);color:#fff;border-radius:999px;padding:1px 8px;font-size:.8rem;margin-left:4px}
 .btn-carrinho span.pula{animation:pula .5s cubic-bezier(.3,1.6,.5,1)}
 /* no celular o topo cabia mais largo que a tela: fica só logo + carrinho */
-@media (max-width:480px){.topo{gap:12px;padding:12px 16px}.topo nav{display:none}.btn-carrinho{margin-left:auto}}
+.topo-whats{flex:none;display:flex;align-items:center;gap:6px;color:#128c4a;font-weight:700;white-space:nowrap}.topo-whats svg{width:26px;height:26px}.topo-whats:hover{color:#25d366}
+@media (max-width:700px){.topo-whats span{display:none}}
+@media (max-width:480px){.topo{gap:12px;padding:12px 16px}.topo nav{display:none}.topo-whats{margin-left:auto}}
 
 /* banner */
 .hero{position:relative;overflow:hidden;text-align:center;padding:84px 20px;color:#fff;background:linear-gradient(120deg,#0b1e4a,#1d4ed8,#38bdf8,#1d4ed8,#0b1e4a);background-size:300% 300%;animation:fluxo 14s ease-in-out infinite}
