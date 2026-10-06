@@ -482,3 +482,13 @@ addEventListener("resize", () => {
 if (history.state && history.state.zoom) history.replaceState(null, "");
 
 renderCategorias(); renderGrade(); renderCarrinho();
+
+// Título do topo: letras animadas uma a uma
+(() => {
+  const h1 = document.querySelector(".hero h1");
+  if (!h1) return;
+  const txt = h1.textContent;
+  h1.setAttribute("aria-label", txt);
+  h1.innerHTML = [...txt].map((ch, i) =>
+    ch === " " ? " " : `<span class="l" aria-hidden="true" style="--i:${i}">${ch}</span>`).join("");
+})();
