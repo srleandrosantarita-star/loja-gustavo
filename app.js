@@ -22,7 +22,6 @@ const PRODUTOS = [
   { id: 25, nome: "Blusa Moletom Grêmio Cinza", cat: "Casacos", preco: 80, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/blusa-gremio-1.jpg", "img/blusa-gremio-2.jpg", "img/blusa-gremio-3.jpg"], tam: ["G"] },
   { id: 26, nome: "Tênis Everlast Feminino Slip-on", cat: "Calçados", preco: 80, emoji: "👟", cor: "#dbe7f3", imgs: ["img/tenis-everlast-1.jpg", "img/tenis-everlast-2.jpg", "img/tenis-everlast-3.jpg"], tam: ["39"] },
   { id: 28, nome: "Chuteira Futsal Umbro Preta", cat: "Calçados", preco: 120, emoji: "👟", cor: "#eceef0", imgs: ["img/futsal-umbro-1.jpg", "img/futsal-umbro-2.jpg", "img/futsal-umbro-3.jpg", "img/futsal-umbro-4.jpg"], tam: ["40"] },
-  { id: 29, nome: "Camiseta Oakley Branca", cat: "Camisetas", preco: null, emoji: "👕", cor: "#e8edf0", imgs: ["img/camiseta-oakley-1.jpg"], tam: [] },
   { id: 30, nome: "Camiseta Beagle Branca Gola V", cat: "Camisetas", preco: 60, emoji: "👕", cor: "#e8edf0", imgs: ["img/camiseta-branca-v-1.jpg", "img/camiseta-branca-v-2.jpg", "img/camiseta-branca-v-3.jpg"], tam: ["GG"] },
   { id: 34, nome: "Moletom Oakley Cinza", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/moletom-oakley-1.jpg", "img/moletom-oakley-2.jpg"], tam: ["G"] },
   { id: 35, nome: "Jaqueta Puma Corta-vento Preta", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#dcdcdf", imgs: ["img/jaqueta-puma-1.jpg", "img/jaqueta-puma-2.jpg", "img/jaqueta-puma-3.jpg", "img/jaqueta-puma-4.jpg"], tam: ["GG"] },
