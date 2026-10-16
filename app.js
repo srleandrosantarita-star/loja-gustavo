@@ -48,6 +48,14 @@ const PRODUTOS = [
   { id: 52, nome: "Kit Batman e Coringa com 12 Acessórios 30 cm", cat: "Brinquedos", preco: 150, emoji: "🦇", cor: "#dcdcdf", imgs: ["img/batman-coringa-1.jpg", "img/batman-coringa-2.jpg", "img/batman-coringa-3.jpg", "img/batman-coringa-4.jpg", "img/batman-coringa-5.jpg", "img/batman-coringa-6.jpg", "img/batman-coringa-7.jpg", "img/batman-coringa-8.jpg", "img/batman-coringa-9.jpg"], tam: ["Único"] },
 ];
 
+// Organiza a vitrine por tipo (tênis com tênis, camiseta com camiseta...); a ordem dentro de cada tipo segue a lista acima
+const TIPOS = [/^t[êe]nis|^chuteira/i, /^camiseta/i, /^camisa/i, /^cal[çc]a/i, /^moletom|^blusa/i, /^jaqueta/i, /^su[ée]ter/i, /^agasalho/i, /^mala|^bolsa/i];
+const tipoDe = p => {
+  const i = TIPOS.findIndex(r => r.test(p.nome));
+  return i < 0 ? TIPOS.length : i;
+};
+PRODUTOS.sort((a, b) => (a.cat === "Casa e Lazer") - (b.cat === "Casa e Lazer") || (a.cat === "Brinquedos") - (b.cat === "Brinquedos") || tipoDe(a) - tipoDe(b));
+
 // ===== Estado =====
 const brl = n => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 let categoria = "Todos";
