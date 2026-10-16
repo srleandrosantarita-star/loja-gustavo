@@ -512,3 +512,15 @@ renderCategorias(); renderGrade(); renderCarrinho();
   h1.innerHTML = txt.split(" ").map(w =>
     `<span class="w">${[...w].map(ch => `<span class="l" aria-hidden="true" style="--i:${i++}">${ch}</span>`).join("")}</span>`).join(" ");
 })();
+
+// ===== Fundo do topo: fotos dos produtos passando, transparentes =====
+(() => {
+  if (!fundoHero) return;
+  const fotos = PRODUTOS.filter(p => p.imgs && p.imgs.length).map(p => p.imgs[0]);
+  const faixa = (lista, cls) => {
+    const itens = lista.map(src => `<img src="${src}" alt="" loading="lazy" draggable="false">`).join("");
+    return `<div class="faixa ${cls}" aria-hidden="true"><div class="faixa-trilho">${itens}${itens}</div></div>`;
+  };
+  const meio = Math.ceil(fotos.length / 2);
+  fundoHero.insertAdjacentHTML("afterbegin", faixa(fotos.slice(0, meio), "faixa-a") + faixa(fotos.slice(meio).concat(fotos.slice(0, 4)), "faixa-b"));
+})();
