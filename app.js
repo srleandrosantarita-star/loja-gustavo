@@ -4,7 +4,7 @@ const WHATSAPP = "5551992084071"; // número da loja (DDI+DDD+número)
 const PRODUTOS = [
   { id: 1, nome: "Camiseta Calvin Klein Verde", cat: "Camisetas", preco: 100, emoji: "👕", cor: "#d5e8dc", imgs: ["img/camiseta-verde-frente.jpg", "img/camiseta-verde-costas.jpg"], tam: ["G", "GG"] },
   { id: 2, nome: "Camiseta Calvin Klein Marrom", cat: "Camisetas", preco: 100, emoji: "👕", cor: "#eadfd2", imgs: ["img/camiseta-marrom-frente.jpg", "img/camiseta-marrom-costas.jpg"], tam: ["G", "GG"] },
-  { id: 3, nome: "Calça Jeans Azul Escuro", cat: "Calças", preco: 159.9, emoji: "👖", cor: "#cfd8e6", imgs: ["img/calca-jeans-look.jpg", "img/calca-jeans-detalhe.jpg", "img/calca-jeans-etiqueta.jpg"], pos: "50% 72%", tam: ["38", "40", "42", "44"] },
+  { id: 3, nome: "Calça Jeans Calvin Klein Azul Escuro", cat: "Calças", preco: 250, emoji: "👖", cor: "#cfd8e6", imgs: ["img/calca-jeans-look.jpg", "img/calca-jeans-detalhe.jpg", "img/calca-jeans-etiqueta.jpg"], pos: "50% 72%", tam: ["44"] },
   { id: 7, nome: "Jaqueta Under Armour Preta", cat: "Casacos", preco: 250, emoji: "🧥", cor: "#d5e6dc", imgs: ["img/jaqueta-preta.jpg", "img/jaqueta-ua-extra-1.jpg", "img/jaqueta-preta-costas.jpg"], tam: ["GG"] },
   { id: 8, nome: "Moletom Volcom Cinza", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#e6dccf", imgs: ["img/moletom-canguru-frente.jpg", "img/moletom-canguru.jpg"], tam: ["G"] },
   { id: 13, nome: "Jaqueta Champion Corta-vento Camuflada Cinza", cat: "Casacos", preco: 200, emoji: "🧥", cor: "#d9d9de", imgs: ["img/jaqueta-camuflada-frente.jpg", "img/jaqueta-camuflada.jpg","img/jaqueta-camuflada-detalhe.jpg", "img/jaqueta-camuflada-costas.jpg", "img/jaqueta-camuflada-barra.jpg", "img/jaqueta-camuflada-look-1.jpg"], tam: ["G"] },
